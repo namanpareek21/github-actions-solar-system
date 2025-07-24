@@ -31,9 +31,14 @@ jobs:
           with:
             name: Mocha-Test-Result
             path: test-results.xml
-   # dev-deploy job
+    dev-deploy:
+      name: dev deploy
+      runs-on: ubuntu-latest
+      steps:
+       - name: hello
+         uses: actions/checkout@v4
     integration-test:
-          needs: unit-testing
+          needs: dev-deploy
           uses: ./.github/workflows/reusable-workflow.yml
           with:
             ingress-url: ${{ needs.dev-deploy.outputs.APP_INGRESS_URL }}
