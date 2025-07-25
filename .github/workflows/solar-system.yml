@@ -11,6 +11,7 @@ jobs:
     unit-testing:
         name: Unit Testing
         runs-on: ubuntu-latest
+        if: github.ref == 'refs/heads/main'
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
